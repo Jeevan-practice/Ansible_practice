@@ -1,0 +1,13 @@
+---
+#Create a user and assign sudo previlages
+
+- name: create a user
+  hosts: localhost
+  become: yes
+  tasks:
+    - ansible.builtin.user:
+        name: Jeevan
+        state: present
+        groups: sudo
+        append: yes
+        shell: /bin/bash

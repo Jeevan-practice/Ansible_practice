@@ -1,0 +1,20 @@
+---
+# This is to install nginx and replace html file
+
+- name: Install nginx
+  hosts: localhost
+  become: yes
+  tasks:
+    - ansible.builtin.package:
+        name: nginx
+        state: present
+        update_cache: yes
+    - service:
+        name: nginx
+        state: started
+        enabled: yes
+    - copy:
+        dest: /usr/share/nginx/html/index.html
+        content: "<h1>Hii Jeevan</h1>"
+
+
